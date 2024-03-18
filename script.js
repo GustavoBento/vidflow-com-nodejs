@@ -1,10 +1,16 @@
-import axios from "axios"
+import axios from 'axios';
 
 const containerVideos = document.querySelector(".videos__container");
 
 async function buscarEMostrarVideos() {
+  /* esse import vai fazer uma verificação se está no site de produção, se não estiver vai usar o localhost pra local */
+  const urlVideos = import.meta.env.VITE_URL_VIDEOS;
+  console.log(urlVideos)
+
+  /* teste */
+
   try {
-    const busca = await axios.get("https://gist.githubusercontent.com/antonio-evaldo/e8a63621b51c883931eb3fa3a3eca990/raw/12f5c46ee6dd00d03c051adadaf341e06452cea0/videos.txt");
+    const busca = await axios.get(urlVideos);
     const videos = busca.data;
 
     videos.forEach((video) => {
